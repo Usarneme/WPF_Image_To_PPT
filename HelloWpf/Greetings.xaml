@@ -15,7 +15,7 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
+                <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Width="Auto" Height="Auto" Margin="0, 50, 0, 0">
                 <Grid.ColumnDefinitions>
@@ -38,10 +38,12 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
                 <Button Grid.Row="0" Content="Find Images" Margin="0 5 0 15" HorizontalAlignment="Center" Width="250" Click="Button_Click"/>
-                <Grid Grid.Row="1" x:Name="MyGrid">
+                <TextBlock Grid.Row="1" x:Name="ErrorHolder" FontSize="40" Background="Red" HorizontalAlignment="Center" />
+                <Grid Grid.Row="2" x:Name="MyGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
