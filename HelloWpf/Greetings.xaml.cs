@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -23,24 +24,35 @@ namespace HelloWpf
         public MainWindow()
         {
             InitializeComponent();
-            Debug.WriteLine("Component initialized...");
         }
 
-        public class Photos
+        private string StringOfBoldWordsFromRichTextBox(RichTextBox rtb)
         {
-            public ICollection<Photo> photoList { get; set; }
+            List<string> boldWords = new List<string>();
+            foreach (Paragraph p in rtb.Document.Blocks)
+            {
+                foreach (Run r in p.Inlines)
+                {
+                    //Debug.WriteLine("r.text {0}. r.fontweight {1}", r.Text, r.FontWeight);
+                    if (r.FontWeight == FontWeights.Bold)
+                    {
+                        boldWords.Add(r.Text);
+                    }
+                }
+            }
+            return string.Join(" ", boldWords.ToArray());
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             MyGrid.Children.Clear();
             ErrorHolder.Text = "";
-
             PexelsClient _pex = new PexelsClient("563492ad6f917000010000019a625093f14641ecb876ff0b65cc8627");
-            string query = TitleText.Text + TextText.Text;
-            Debug.WriteLine("Button clicked...getting results... {0}", query);
+            string boldWords = StringOfBoldWordsFromRichTextBox(TextText);
+            string query = TitleText.Text + " " + boldWords;
+            //Debug.WriteLine("Button clicked...getting results... {0}", query);
             PhotoPage result = await _pex.SearchPhotosAsync(query, null, "medium", null, null, 1, NUMBER_OF_IMAGES);
-            Debug.WriteLine("Got result from pexels: {0} - length: {1}", result, result.photos.Count);
+            //Debug.WriteLine("Got result from pexels: {0} - length: {1}", result, result.photos.Count);
             StackPanel sp;
 
             if (result.photos.Count == 0)
@@ -54,7 +66,7 @@ namespace HelloWpf
                 {
                     int row = (int)Math.Floor((double)index / 4);
                     int col = index % 4;
-                    Debug.WriteLine("ROW {0}, COL {1}, image: {2}", row, col, p.url);
+                    //Debug.WriteLine("ROW {0}, COL {1}, image: {2}", row, col, p.url);
                     sp = new StackPanel();
                     sp.SetValue(Grid.RowProperty, row);
                     sp.SetValue(Grid.ColumnProperty, col);
