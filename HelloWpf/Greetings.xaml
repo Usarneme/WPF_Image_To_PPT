@@ -16,6 +16,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="2*" />
+                <RowDefinition Height="50" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Width="Auto" Height="Auto" Margin="0, 50, 0, 0">
                 <Grid.ColumnDefinitions>
@@ -54,8 +55,11 @@
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-                    <Border BorderBrush="Aquamarine" BorderThickness="5" Grid.Column="0" Grid.Row="0" Width="Auto" Height="Auto" />
                 </Grid>
+            </Grid>
+
+            <Grid Grid.Row="2" Width="Auto" Height="Auto">
+                <Button Content="Create Slide" Margin="0 5 0 15" HorizontalAlignment="Center" Width="250" Click="Create_Slide" x:Name="Slide_Button" IsEnabled="False" />
             </Grid>
         </Grid>
     </Grid>
