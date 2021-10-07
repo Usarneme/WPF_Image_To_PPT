@@ -6,10 +6,10 @@ This Windows application is used to find images related to a user-input title an
 
 ## Requirements
 
-- Visual Studio
+- Visual Studio ([download here](https://visualstudio.microsoft.com/downloads/))
 - Windows
 - Microsoft Office Suite (PowerPoint specifically)
-- C#/Dotnet
+- C#/Dotnet ([download here](https://dotnet.microsoft.com/download))
 
 ---
 
