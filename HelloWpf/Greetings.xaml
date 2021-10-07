@@ -54,6 +54,7 @@
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
+                    <Border BorderBrush="Aquamarine" BorderThickness="5" Grid.Column="0" Grid.Row="0" Width="Auto" Height="Auto" />
                 </Grid>
             </Grid>
         </Grid>
